@@ -14,7 +14,7 @@ LABELS_PATH = "models/labels.json"
 
 # 1. Chargement sécurisé
 if not os.path.exists(MODEL_PATH) or not os.path.exists(LABELS_PATH):
-    print("❌ ERREUR : Fichiers modèles introuvables dans /models")
+    print("ERREUR : Fichiers modèles introuvables dans /models")
 else:
     interpreter = tf.lite.Interpreter(model_path=MODEL_PATH)
     interpreter.allocate_tensors()
@@ -22,7 +22,7 @@ else:
         labels = json.load(f)
     input_details = interpreter.get_input_details()
     output_details = interpreter.get_output_details()
-    print("✅ Modèle et Labels chargés avec succès !")
+    print(" Modèle et Labels chargés avec succès !")
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -51,5 +51,5 @@ def predict():
     })
 
 if __name__ == '__main__':
-    print("🚀 API AgroConnect lancée sur http://127.0.0.1:5000")
+    print(" API AgroConnect lancée sur http://127.0.0.1:5000")
     app.run(debug=False, port=5000)
