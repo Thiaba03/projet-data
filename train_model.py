@@ -25,7 +25,7 @@ datagen = ImageDataGenerator(
     horizontal_flip=True
 )
 
-print("📸 Chargement des images d'entraînement...")
+print("Chargement des images d'entraînement...")
 train_gen = datagen.flow_from_directory(
     TRAIN_DIR,
     target_size=IMG_SIZE,
@@ -33,7 +33,7 @@ train_gen = datagen.flow_from_directory(
     class_mode='categorical'
 )
 
-print("📸 Chargement des images de validation...")
+print("Chargement des images de validation...")
 val_gen = datagen.flow_from_directory(
     VAL_DIR,
     target_size=IMG_SIZE,
@@ -57,7 +57,7 @@ model = models.Sequential([
 model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
 # 4. Lancement de l'entraînement
-print(f"🚀 Lancement de l'entraînement pour {train_gen.num_classes} maladies...")
+print(f" Lancement de l'entraînement pour {train_gen.num_classes} maladies...")
 # On commence par 3 époques pour tester la rapidité
 history = model.fit(
     train_gen, 
@@ -67,4 +67,4 @@ history = model.fit(
 
 # 5. Sauvegarde du modèle final
 model.save('models/agroconnect_model.h5')
-print("\n✅ Félicitations ! Modèle sauvegardé sous : models/agroconnect_model.h5")
+print("\n Félicitations ! Modèle sauvegardé sous : models/agroconnect_model.h5")
